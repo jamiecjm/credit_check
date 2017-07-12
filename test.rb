@@ -17,7 +17,7 @@ describe "CreditCheck" do
       expect(correct_check.valid?).to eq(true)
     end
 
-    it "should return true if number is valid" do
+    it "should return false if number is valid" do
       expect(wrong_check.valid?).to eq(false)
     end
   end

@@ -1,4 +1,3 @@
-require 'byebug'
 class CreditCheck
 	def initialize(card_number)
 		@card_number = card_number
@@ -7,7 +6,7 @@ class CreditCheck
 	def valid?
 		# convert string into integer
 		numbers = @card_number.reverse.chars.map(&:to_i)
-		# sum all integer
+		# sum all digits
 		numbers.each_with_index.inject(0) { |sum,(i,j)| 
 			# times 2 to every 2nd number and sum the digits
 			num = j.odd? ? (i*2).divmod(10).inject(:+) : i;
