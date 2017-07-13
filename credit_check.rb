@@ -5,12 +5,9 @@ class CreditCheck
 	end
 
 	def valid?
-		# get the number on odd index
-		odd_number = @card_number.reverse.gsub(/(.).?/, '\1')
-		# get the number on even index and times two to it
-		even_number = @card_number.reverse.gsub(/.(.?)/, '\1').to_i*2
+		# find the number on even index and times 2 to it
+		number = @card_number.reverse.gsub(/(.)(.?)/) {|x| $1 + ($2.to_i*2).to_s}
 		# sum all digits and check modulo 10
-		(odd_number+even_number.to_s).split('').map(&:to_i).inject(:+)%10 == 0
-
+		number.split('').map(&:to_i).inject(:+)%10 == 0
 	end
 end
