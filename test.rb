@@ -1,7 +1,7 @@
 require 'rspec'
 require_relative 'credit_check'
 describe "CreditCheck" do
-  let(:correct_data) { "342804633855673" }
+  let(:correct_data) { "79927398713" }
   let(:wrong_data) { "342801633855673" }
   let(:correct_check) { CreditCheck.new(correct_data) }
   let(:wrong_check) { CreditCheck.new(wrong_data) }

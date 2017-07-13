@@ -5,12 +5,12 @@ class CreditCheck
 	end
 
 	def valid?
-		# reverse card_number and times 2 for every second number
-		numbers = @card_number.reverse.chars.each_slice(2).flat_map {|odd,even| [odd.to_i,(even.to_i*2).divmod(10)]}
-		# remove nested brackets and sum all digits
-		numbers.flatten.inject(:+)%10 == 0
+		# get the number on odd index
+		odd_number = @card_number.reverse.gsub(/(.).?/, '\1')
+		# get the number on even index and times two to it
+		even_number = @card_number.reverse.gsub(/.(.?)/, '\1').to_i*2
+		# sum all digits and check modulo 10
+		(odd_number+even_number.to_s).split('').map(&:to_i).inject(:+)%10 == 0
+
 	end
 end
-
-cc = CreditCheck.new("342804633855673")
-cc.valid?
